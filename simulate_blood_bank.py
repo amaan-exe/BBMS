@@ -50,13 +50,49 @@ GENDERS = ["Male", "Female"]
 GENDER_WEIGHTS = [0.52, 0.48]
 
 CITIES = [
-    "Mumbai", "Delhi", "Kolkata", "Chennai", "Bengaluru", "Hyderabad",
-    "Pune", "Ahmedabad", "Jaipur", "Lucknow", "Patna", "Nagpur",
+    "Jamshedpur", "Ghatshila", "Ranchi", "Dhanbad", "Bokaro", "Hazaribagh", "Deoghar", "Giridih",
+    "Patna", "Bhagalpur", "Muzaffarpur", "Gaya", "Darbhanga", "Purnia", "Ara",
+    "Kolkata", "Howrah", "Asansol", "Durgapur", "Siliguri", "Kharagpur", "Malda",
+    "Bhubaneswar", "Cuttack", "Rourkela", "Berhampur", "Sambalpur", "Balasore", "Puri",
+    "Mumbai", "Pune", "Nagpur", "Thane", "Nashik", "Aurangabad", "Kolhapur",
+    "Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar",
+    "Bengaluru", "Mysuru", "Hubballi", "Mangaluru", "Belagavi",
+    "Hyderabad", "Warangal", "Karimnagar", "Nizamabad",
+    "Chennai", "Coimbatore", "Madurai", "Salem", "Tiruchirappalli",
+    "Delhi", "Noida", "Gurugram", "Ghaziabad", "Faridabad",
+    "Lucknow", "Kanpur", "Varanasi", "Prayagraj", "Agra", "Meerut", "Bareilly", "Gorakhpur",
+    "Jaipur", "Jodhpur", "Udaipur", "Kota", "Ajmer",
+    "Bhopal", "Indore", "Jabalpur", "Gwalior", "Ujjain",
+    "Chandigarh", "Ludhiana", "Amritsar", "Jalandhar",
+    "Guwahati", "Shillong", "Agartala", "Imphal", "Aizawl",
+    "Kochi", "Thiruvananthapuram", "Kozhikode",
+    "Visakhapatnam", "Vijayawada", "Guntur",
+    "Raipur", "Bilaspur"
 ]
 
-MALE_FIRST = ["Amit","Rohit","Vikram","Suresh","Rajesh","Arjun","Aman","Ankit","Vijay","Karan"]
-FEMALE_FIRST = ["Ananya","Diya","Mira","Neha","Priya","Shreya","Aditi","Riya","Sara","Pooja"]
-LAST_NAMES = ["Sharma","Verma","Gupta","Agarwal","Khan","Patel","Singh","Reddy","Iyer","Joshi"]
+MALE_FIRST = ["Amaan", "Aarav", "Vihaan", "Vivaan", "Advik", "Kabir", "Arjun", "Rohan", "Rahul", "Amit",
+    "Sunil", "Vikram", "Suresh", "Ramesh", "Rajesh", "Deepak", "Gaurav", "Manoj", "Vinay", "Rohit",
+    "Alok", "Vijay", "Karan", "Ayush", "Aditya", "Yash", "Harsh", "Nikhil", "Ankit", "Abhishek",
+    "Pranav", "Siddharth", "Akash", "Mohit", "Varun", "Shubham", "Akhil", "Tarun", "Nitin", "Pankaj",
+    "Rakesh", "Ashish", "Sachin", "Anurag", "Lokesh", "Hemant", "Anoop", "Ravindra", "Mukesh", "Dinesh"]
+
+
+FEMALE_FIRST = ["Ananya", "Diya", "Mira", "Neha", "Pooja", "Priya", "Sneha", "Kavita", "Gita", "Geeta",
+    "Sara", "Riya", "Priyanka", "Anjali", "Sunita", "Divya", "Meera", "Anita", "Suman", "Jyoti",
+    "Shreya", "Aditi", "Nandini", "Ishita", "Khushi", "Simran", "Muskan", "Tanvi", "Rashmi", "Swati",
+    "Komal", "Ritu", "Pallavi", "Preeti", "Pinki", "Kritika", "Shruti", "Pallak", "Nikita", "Poonam",
+    "Farah", "Ayesha", "Zoya", "Sana", "Fatima", "Nazia", "Hina", "Afreen", "Alina", "Mariam"]
+
+
+LAST_NAMES = [ "Sharma", "Verma", "Gupta", "Malhotra", "Agarwal", "Mehta", "Jain", "Chopra", "Singh", "Patel",
+    "Kumar", "Rao", "Nair", "Pillai", "Yadav", "Das", "Bose", "Sen", "Chowdhury", "Roy",
+    "Khan", "Ali", "Shah", "Iyer", "Kulkarni", "Joshi", "Deshmukh", "Banerjee", "Chatterjee", "Mishra",
+    "Tripathi", "Pandey", "Tiwari", "Dubey", "Shukla", "Srivastava", "Saxena", "Sinha", "Sahu", "Prasad",
+    "Mahato", "Mahto", "Mondal", "Paul", "Dutta", "Ghosh", "Mukherjee", "Biswas", "Naik", "Reddy",
+    "Naidu", "Shetty", "Gowda", "Bhat", "Hegde", "Chaudhary", "Thakur", "Chauhan", "Solanki", "Pawar",
+    "Jadhav", "More", "Bhosale", "Kale", "Pathak", "Ansari", "Qureshi", "Shaikh", "Hussain", "Syed",
+    "Farooqui", "Rehman", "Beg", "Lal", "Soni", "Nigam", "Rawat", "Negi", "Bisht", "Tomar"]
+
 
 DONOR_BAG_CHOICES = [350, 450]
 DONOR_BAG_WEIGHTS = [0.8, 0.2]
@@ -81,7 +117,7 @@ DONOR_COOLDOWN = 90
 
 
 class Simulator:
-    def __init__(self, days=365, target_donors=3500, target_receivers=(1000,1500)):
+    def __init__(self, days=365, target_donors=10574, target_receivers=(5800,7200)):
         self.days = days
         self.target_donors = target_donors
         self.target_receivers = target_receivers
@@ -250,6 +286,7 @@ class Simulator:
             if self.inserted_donors >= self.target_donors:
                 break
             donor = self.generate_donor(date)
+            print("\nDONOR : ",donor)
             # enforce 90-day rule for repeat donors: new donors always allowed
             try:
                 database.add_donor(*donor)
@@ -270,6 +307,7 @@ class Simulator:
             if self.inserted_receivers >= self.target_receivers[1]:
                 break
             recv = self.generate_receiver(date)
+            print("\nReciever : ",recv)
             requested_qty = int(recv[10])
             requested_bt = recv[9]
 

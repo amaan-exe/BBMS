@@ -17,7 +17,7 @@ from function import nibble_encrypt, nibble_decrypt
 DB_NAME = "blood.db"
 _ADMIN_USERNAME = "Admin"
 _ADMIN_PASSWORD = "1234"
-_ADMIN_CONTACT = "0000000000"
+_ADMIN_CONTACT = "827101179"
 _ADMIN_RECOVERY = "AdminRecovery"
 _ADMIN_QUESTION = "what is your hobby?"
 
