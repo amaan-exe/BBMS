@@ -1,0 +1,205 @@
+================================================================================
+          BLOOD BANK MANAGEMENT SYSTEM — TECH STACK & FUNCTIONALITIES
+================================================================================
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                              TECHNOLOGY STACK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+LANGUAGE:
+  • Python 3.x
+
+GUI FRAMEWORK:
+  • Tkinter (tk)           — Core GUI framework
+  • Tkinter.ttk            — Modern themed widgets (buttons, labels, entries, comboboxes, treeviews)
+  • Pillow (PIL)           — Image loading and rendering
+
+DATABASE:
+  • SQLite3                — Lightweight embedded relational database (blood.db)
+
+CALENDAR:
+  • tkcalendar (DateEntry) — Interactive date picker widget
+
+PDF GENERATION:
+  • fpdf2 (FPDF)           — Professional PDF report generation
+
+SECURITY:
+  • CrypTXT (Nibble Encryption) — Custom password encryption/decryption (d:\work\bloodbank\CrypTXT\function.py)
+
+STANDARD LIBRARY MODULES:
+  • sqlite3                — Database connectivity
+  • datetime / timedelta   — Date calculations (expiry tracking)
+  • csv                    — CSV file export
+  • json                   — Config persistence (Remember Me)
+  • os / shutil            — File operations (backup/restore)
+  • re                     — Regular expressions (input validation)
+  • logging                — Audit log file generation
+  • subprocess             — Receipt printing
+  • hashlib                — (replaced by CrypTXT nibble encryption)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                              FUNCTIONALITIES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. USER AUTHENTICATION & SECURITY
+   • User Registration with input validation
+   • User Login with credential verification
+   • Password Encryption (CrypTXT nibble encryption) with backward-compatible auto-migration
+   • Password Strength Validation (uppercase, lowercase, digits, min 8 chars)
+   • Show/Hide Password toggle
+   • Remember Me (persisted via config.json)
+   • Forgot Password / Security Question recovery
+   • Role-Based Access Control (Admin / Staff)
+
+2. SPLASH SCREEN
+   • Animated loading bar on startup
+   • Blood drop icon with application branding
+   • Smooth transition to login screen
+
+3. DASHBOARD
+   • Quick Overview stat cards (Total Donors, Receivers, Blood Units)
+   • Low Inventory Alerts (red warnings when blood type ≤ 5 units)
+   • Expiring Blood Units panel (tracks 42-day shelf life, warns 7 days out)
+   • Dark Mode / Light Mode toggle
+   • Role-aware navigation (Admin tools hidden from Staff
+
+
+4. DONOR MANAGEMENT
+   • Add / Update / Delete donor records
+   • Interactive Calendar Date Picker (tkcalendar)
+   • Form validation (mobile number, required fields)
+   • Disease screening check
+   • Auto-update blood inventory on donation
+   • Search by Mobile or ID Number
+   • Sortable table columns (click headers)
+   • Double-click profile popup card
+   • Export to CSV
+   • Print receipt slip
+   • Keyboard Shortcuts (Ctrl+S save, Ctrl+D delete, Esc clear)
+
+5. RECEIVER MANAGEMENT
+   • Add / Update / Delete receiver records
+   • Interactive Calendar Date Picker
+   • Blood availability check before dispensing
+   • Auto-update blood inventory on request
+   • Search by Mobile or ID Number
+   • Sortable table columns
+   • Double-click profile popup card
+   • Blood Request Matching (ABO/Rh compatibility engine)
+   • "Find Donors" button with compatible donor results table
+   • Export to CSV
+   • Print receipt slip
+   • Keyboard Shortcuts
+
+6. BLOOD INVENTORY
+   • View all 8 blood group quantities (A+, B+, O+, AB+, A-, B-, O-, AB-)
+   • Export inventory data to CSV
+
+7. BLOOD REQUEST MATCHING
+   • ABO/Rh compatibility rules engine
+   • Universal donor (O-) and universal receiver (AB+) support
+   • Finds all compatible donors from the database
+   • Results displayed in a popup with donor details
+
+8. PDF REPORT GENERATION
+   • Donor Report — full table with all donor records
+   • Receiver Report — full table with all receiver records
+   • Inventory Report — blood group quantities with totals
+   • Professional formatting: branded headers, table styling, page numbers
+
+9. DATA EXPORT (CSV)
+   • Export Donor data to CSV
+   • Export Receiver data to CSV
+   • Export Inventory data to CSV
+   • File save dialog with custom filename
+
+10. DATABASE BACKUP & RESTORE (Admin Only)
+    • One-click timestamped backup to backups/ folder
+    • Restore from any .db backup file
+    • Safety pre-restore backup of current database
+
+11. AUTOMATED AUDIT LOGGING
+    • All critical actions logged to audit.log with timestamps
+    • Tracked events: LOGIN, LOGOUT, ADD_DONOR, UPDATE_DONOR,
+      DELETE_DONOR, ADD_RECEIVER, UPDATE_RECEIVER, DELETE_RECEIVER,
+      BACKUP, RESTORE
+    • Admin-only Audit Log Viewer (terminal-styled green-on-black UI)
+
+12. DARK MODE
+    • Full light/dark theme system
+    • Toggleable via dashboard header button
+    • Charts and UI elements adapt to selected theme
+    • Color schemes: Light (white/gray) and Dark (navy/dark blue)
+
+13. ROLE-BASED ACCESS CONTROL (RBAC)
+    • Admin role: Full access + Audit Log + Backup/Restore + Delete records
+    • Staff role: Can add/update records but CANNOT delete or access admin tools
+    • Delete buttons disabled for Staff users
+    • Role displayed in dashboard header
+
+14. TOOLTIPS
+    • Hover hints on all dashboard buttons
+    • Tooltip on blood matching button
+    • Dark-styled tooltip popups with delay
+
+15. KEYBOARD SHORTCUTS
+    • Ctrl+1 — Open Donor Management
+    • Ctrl+2 — Open Receiver Management
+    • Ctrl+3 — Open Blood Inventory
+    • Ctrl+S — Save/Add current record
+    • Ctrl+D — Delete selected record
+    • Esc    — Clear all form fields
+
+16. BLOOD EXPIRY TRACKING
+    • 42-day shelf life calculation from donation date
+    • Dashboard panel showing units expiring within 7 days
+    • Color-coded urgency (red ≤ 2 days, orange 3-7 days)
+
+17. LOW INVENTORY THRESHOLD ALERTS
+    • Configurable threshold (default: 5 units)
+    • Red warning cards on dashboard for critical blood types
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                            PROJECT STRUCTURE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Modern_Blood_Bank/
+├── main.py                  — App entry point, splash screen, AppManager
+├── database.py              — SQLite queries, password hashing, RBAC, analytics
+├── constants.py             — Blood group mapping, expiry days, thresholds, roles
+├── blood.db                 — SQLite database file (auto-created)
+├── config.json              — Remember Me preferences
+├── audit.log                — System activity log
+├── techstack.txt            — This file
+│
+├── ui/
+│   ├── __init__.py
+│   ├── styles.py            — Dual theme system (light/dark), ttk styling
+│   ├── login.py             — Login, registration, forgot password
+│   ├── dashboard.py         — Analytics, alerts, navigation, dark mode
+│   ├── donor.py             — Donor CRUD, calendar, sorting, profile cards
+│   ├── receiver.py          — Receiver CRUD, blood matching, sorting
+│   └── inventory.py         — Blood stock display
+│
+├── utils/
+│   ├── __init__.py
+│   ├── audit_log.py         — Event logging to audit.log
+│   ├── backup.py            — Database backup & restore
+│   ├── blood_match.py       — ABO/Rh compatibility engine
+│   ├── export.py            — CSV export from Treeview
+│   ├── pdf_report.py        — PDF report generation (fpdf2)
+│   ├── receipt.py           — Print receipt slips
+│   └── tooltip.py           — Hover tooltip widget
+│
+└── backups/                 — Database backup files (auto-created)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                          DEPENDENCIES (pip install)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+pip install pillow tkcalendar fpdf2
+
+================================================================================

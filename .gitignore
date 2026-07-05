@@ -1,0 +1,94 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+pip-wheel-metadata/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Mypy
+.mypy_cache/
+
+# Pyre
+.pyre/
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints
+
+# Logs
+*.log
+
+# Secrets / environment
+.env
+.env.*
+secrets.json
+
+# Database files
+*.sqlite3
+*.db
+blood.db.pre_restore
+backups/
+
+# Reports / exports
+*.csv
+*.xlsx
+
+# Python bytecode and build artifacts
+*.pyc
+*.pyo
+*.pyd
+
+# Other
+.python-version
+Pipfile.lock
+
+# Application-specific logs and outputs
+audit.log
+logs/
+exports/
+receipts/
+reports/
+
+# Simulation outputs
+simulation_*.log
+simulation_*.json
+
+# Temporary files
+temp/
+tmp/
